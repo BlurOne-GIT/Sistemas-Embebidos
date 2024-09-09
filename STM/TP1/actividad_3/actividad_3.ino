@@ -11,7 +11,7 @@ void setup() {
   pinMode(S1, INPUT);
   pinMode(S2, INPUT);
   afio_cfg_debug_ports(AFIO_DEBUG_SW_ONLY);
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
@@ -33,5 +33,5 @@ void loop() {
   digitalWrite(L1, wL1);
   digitalWrite(L2, wL2);
   digitalWrite(L3, wL3);
-  Serial.write("SW1: " + rS1 + " SW2: " + rS2);
+  Serial.println("SW1: " + rS1 + " SW2: " + rS2);
 }
