@@ -33,5 +33,5 @@ void loop() {
   digitalWrite(L1, wL1);
   digitalWrite(L2, wL2);
   digitalWrite(L3, wL3);
-  Serial.println("SW1: " + rS1 + " SW2: " + rS2);
+  Serial.println("SW1: " + String(rS1) + " SW2: " + String(rS2));
 }
