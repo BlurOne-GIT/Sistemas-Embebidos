@@ -60,10 +60,10 @@ void mode2() {
   digitalWrite(L1, odd);
   digitalWrite(L3, odd);
   digitalWrite(L5, odd);
-  uint8 even = !digitalRead(P1);
-  digitalWrite(L2, odd);
-  digitalWrite(L4, odd);
-  digitalWrite(L6, odd);
+  uint8 even = !digitalRead(P2);
+  digitalWrite(L2, even);
+  digitalWrite(L4, even);
+  digitalWrite(L6, even);
 }
 
 void mode3() {
@@ -71,7 +71,7 @@ void mode3() {
   digitalWrite(L1, bottom);
   digitalWrite(L2, bottom);
   digitalWrite(L3, bottom);
-  uint8 top = digitalRead(S1);
+  uint8 top = digitalRead(S2);
   digitalWrite(L4, top);
   digitalWrite(L5, top);
   digitalWrite(L6, top);
