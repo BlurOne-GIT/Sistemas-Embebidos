@@ -32,21 +32,15 @@ void loop() {
 
   waitRelease = false;
 
-  if (++count == 4)
-  {
-    count = 0;
-    digitalWrite(L1, LOW);
-    digitalWrite(L2, LOW);
-    digitalWrite(L3, LOW);
-    return;
+  switch (++count) {
+    case 1: digitalWrite(L1, HIGH); break;
+    case 2: digitalWrite(L2, HIGH); break;
+    case 3: digitalWrite(L3, HIGH); break;
+    case 4:
+      count = 0;
+      digitalWrite(L1, LOW);
+      digitalWrite(L2, LOW);
+      digitalWrite(L3, LOW);
+      break;
   }
-
-  if (count == 1)
-    digitalWrite(L1, HIGH);
-  
-  if (count == 2)
-    digitalWrite(L2, HIGH);
-
-  if (count == 3)
-    digitalWrite(L3, HIGH);
 }
