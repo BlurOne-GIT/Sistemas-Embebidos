@@ -4,7 +4,7 @@
 void setup() {
   // put your setup code here, to run once:
   pinMode(PB5, OUTPUT);
-  pinMode(LDR, INPUT_ANALOG)
+  pinMode(LDR, INPUT_ANALOG);
 }
 
 void loop() {

@@ -35,10 +35,12 @@ void loop() {
   delay(50);
   if (!waitRelease && digitalRead(P1) && digitalRead(P2))
     waitRelease = true;
-  if (waitRelease && (!digitalRead(P1) || !digitalRead(P2))) {
+  if (waitRelease && !digitalRead(P1) && !digitalRead(P2)) {
     waitRelease = false;
     ++mode;
-    mode %= 5;  
+    mode %= 5;
+    for (int i = 0; i < 6; ++i)
+      digitalWrite(L1+i, LOW);
   }
   // put your main code here, to run repeatedly:
   switch (mode) {
