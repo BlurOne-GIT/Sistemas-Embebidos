@@ -38,6 +38,8 @@ void peatonInterrupt() {
 void emergencyInterrupt() {
   emergency = !emergency;
   digitalWrite(BUZ, emergency);
+  if (emergency)
+    Serial.println("Ayuda policia!!1!");
   setState(emergency ? StateR : StateRA);
 }
 
