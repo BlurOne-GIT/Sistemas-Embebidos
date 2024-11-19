@@ -23,6 +23,7 @@ void setup() {
   attachInterrupt(BTN1, peatonInterrupt, RISING);
   attachInterrupt(BTN2, emergencyInterrupt, RISING);
   Serial.begin(115200);
+  setState(StateV);
 }
 
 void loop() {
@@ -31,13 +32,13 @@ void loop() {
 }
 
 void peatonInterrupt() {
-  setState(StateA);
+  setState(state == StateV ? StateA : StateR);
 }
 
 void emergencyInterrupt() {
   emergency = !emergency;
   digitalWrite(BUZ, emergency);
-  setState(emergency ? StateA : StateRA);
+  setState(emergency ? StateR : StateRA);
 }
 
 void setState(char newState) {
@@ -45,11 +46,12 @@ void setState(char newState) {
   digitalWrite(R, state == StateR || state == StateRA);
   digitalWrite(A, state == StateA || state == StateRA);
   digitalWrite(V, state == StateV);
-  if (state != StateV && !(emergency && state == StateR))
+  if (state == StateRA || state == StateA || (!emergency && state == StateR))
     setTimer(state == StateR ? 5 : 2, advanceTrafficLight);
 }
 
 void advanceTrafficLight() {
+  Timer1.pause();
   setState((state+1)%4);
 }
 
